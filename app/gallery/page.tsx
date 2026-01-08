@@ -122,7 +122,7 @@ export default function GalleryPage() {
           <div className="relative z-10 w-full max-w-5xl rounded-3xl bg-white p-6 shadow-xl">
             <div className="flex items-center justify-between">
               <p className="text-xs text-stone-500">
-                Image {activeIndex + 1} of {galleryImages.length}
+                Image {(activeIndex ?? 0) + 1} of {galleryImages.length}
               </p>
               <button
                 type="button"
