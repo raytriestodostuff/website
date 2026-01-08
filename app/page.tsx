@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="relative">
       {/* Navigation */}
-      <Navigation />
+      <Navigation revealOnHover={false} />
 
       {/* Page Sections */}
       <Hero />

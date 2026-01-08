@@ -33,7 +33,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <section className="pt-28 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-6">
-            <Link href="/projects" className="text-sm text-stone-500 hover:text-stone-900">
+            <Link href="/projects" className="text-sm text-stone-500 hover:text-stone-900 mt-4 inline-block">
               Back to projects
             </Link>
             <div>

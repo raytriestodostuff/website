@@ -22,7 +22,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="relative">
-      <Navigation />
+      <Navigation revealOnHover />
 
       <section className="pt-28 pb-16 px-6">
         <div className="max-w-5xl mx-auto">
