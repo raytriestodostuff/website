@@ -40,7 +40,7 @@ export default function Gallery() {
                 <Link href="/gallery" className="block">
                   <div className="relative h-56 overflow-hidden rounded-2xl bg-white shadow-sm transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
                     <img
-                      src={item.src}
+                      src={item.thumb ?? item.src}
                       alt="Gallery preview"
                       className="h-full w-full object-cover"
                       loading="lazy"

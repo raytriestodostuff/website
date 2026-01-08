@@ -91,7 +91,7 @@ export default function GalleryPage() {
                   className="relative h-60 w-full overflow-hidden rounded-2xl bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)]"
                 >
                   <img
-                    src={item.src}
+                    src={item.thumb ?? item.src}
                     alt="Gallery image"
                     className="h-full w-full object-cover"
                     loading="lazy"
