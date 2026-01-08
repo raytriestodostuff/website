@@ -102,7 +102,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'photobiomodulation-flex-cap',
-    title: 'Photobiomodulation Flex Cap',
+    title: 'Phototherapy Flex Cap',
     status: 'Prototype',
     focus: 'Flex PCB design, photobiomodulation, wearable electronics',
     summary: 'Flex PCB cap for red and NIR light therapy using multiplexed LED control.',

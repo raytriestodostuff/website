@@ -41,7 +41,7 @@ export default function ProjectsPage() {
           </motion.div>
 
           <div className="mt-10 grid lg:grid-cols-[3fr_1fr] gap-8 items-start">
-            <div className="grid gap-6">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.title}
@@ -53,13 +53,11 @@ export default function ProjectsPage() {
                 >
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="notion-card p-6 block transition-transform duration-200 group-hover:-translate-y-1"
+                    className="notion-card p-6 h-full block transition-transform duration-200 group-hover:-translate-y-1"
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                      <h2 className="text-2xl font-semibold text-stone-900">{project.title}</h2>
-                      <span className="notion-chip">{project.status}</span>
-                    </div>
-                    <p className="text-stone-500 text-sm mt-2">{project.focus}</p>
+                    <h2 className="text-2xl font-semibold text-stone-900 leading-tight break-words">
+                      {project.title}
+                    </h2>
                     <p className="text-stone-600 mt-4 text-sm leading-relaxed">{project.summary}</p>
                     <span className="text-xs uppercase tracking-widest text-stone-500 mt-4 inline-block">
                       Read more

@@ -44,7 +44,9 @@ export default function Projects() {
                     className="notion-card p-6 min-w-[260px] sm:min-w-[320px] lg:min-w-[360px] snap-start transition-transform duration-200 hover:-translate-y-1"
                   >
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-stone-900">{project.title}</h3>
+                      <h3 className="text-lg font-semibold text-stone-900 leading-tight break-words">
+                        {project.title}
+                      </h3>
                       <span className="notion-chip">{project.status}</span>
                     </div>
                     <p className="text-stone-600 mt-4 text-sm leading-relaxed">{project.summary}</p>
