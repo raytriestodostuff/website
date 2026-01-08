@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased;
+    color: #1f1f1f;
+    background-color: #f7f6f3;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    color: #1f1f1f;
+    background-image: none;
+    -webkit-text-fill-color: currentColor;
+  }
+
+  .glow-text {
+    text-shadow: none;
+  }
+
+  .glass {
+    @apply bg-white border border-black/10;
+  }
+
+  .glow-border {
+    box-shadow: none;
+  }
+
+  .notion-card {
+    @apply bg-white border border-black/10 rounded-2xl;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  }
+
+  .notion-chip {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs uppercase tracking-widest bg-black/5 text-stone-600;
+  }
+
+  .notion-chip-button {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs uppercase tracking-widest transition-colors;
+  }
+
+  .notion-chip-active {
+    @apply bg-near-black text-white;
+  }
+
+  .notion-chip-inactive {
+    @apply bg-black/5 text-stone-600 hover:bg-black/10;
+  }
+
+  .notion-button {
+    @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold transition-all;
+  }
+
+  .notion-button-primary {
+    @apply bg-near-black text-white hover:bg-black;
+  }
+
+  .notion-button-secondary {
+    @apply border border-black/10 text-stone-700 hover:bg-black/5;
+  }
+
+  .nav-surface {
+    background: rgba(247, 246, 243, 0.78);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+}
+
+/* Custom selection color */
+::selection {
+  background-color: rgba(17, 24, 39, 0.2);
+  color: #111827;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Custom Prose Styles for Blog */
+.prose {
+  color: rgba(30, 41, 59, 0.9);
+}
+
+.prose h2 {
+  color: #0f172a;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #00f0ff 0%, #b537f2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prose h3 {
+  color: #0f172a;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose p {
+  color: rgba(30, 41, 59, 0.75);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose li {
+  color: rgba(30, 41, 59, 0.75);
+  margin-bottom: 0.75rem;
+}
+
+.prose strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.prose a {
+  color: #2a9d8f;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.prose a:hover {
+  color: #e76f51;
+}
+
+.prose blockquote {
+  border-left: 4px solid #2a9d8f;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.prose code {
+  background: rgba(15, 23, 42, 0.08);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  color: #2a9d8f;
+}
+
+.prose pre {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
+  color: rgba(30, 41, 59, 0.85);
+}
