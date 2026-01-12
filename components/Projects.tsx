@@ -47,7 +47,7 @@ export default function Projects() {
                       <h3 className="text-lg font-semibold text-stone-900 leading-tight break-words">
                         {project.title}
                       </h3>
-                      <span className="notion-chip text-[9px] px-2 py-0.5 leading-none tracking-wide sm:text-[10px] sm:px-2.5 sm:py-1 sm:shrink-0">
+                      <span className="notion-chip text-[9px] px-2 py-0.5 leading-none tracking-wide self-start w-fit sm:self-auto sm:text-[10px] sm:px-2.5 sm:py-1 sm:shrink-0">
                         {project.status}
                       </span>
                     </div>

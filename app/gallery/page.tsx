@@ -45,19 +45,33 @@ export default function GalleryPage() {
         return
       }
       const touch = event.changedTouches[0]
-      const deltaX = touchStartX.current - touch.clientX
-      const deltaY = touchStartY.current - touch.clientY
+      const deltaX = touch.clientX - touchStartX.current
+      const deltaY = touch.clientY - touchStartY.current
       touchStartX.current = null
       touchStartY.current = null
 
-      if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) {
+      const absX = Math.abs(deltaX)
+      const absY = Math.abs(deltaY)
+      const swipeThreshold = 28
+      const tapThreshold = 8
+
+      if (absX >= swipeThreshold && absX > absY) {
+        if (deltaX < 0) {
+          goNext()
+        } else {
+          goPrev()
+        }
         return
       }
 
-      if (deltaX > 0) {
-        goNext()
-      } else {
-        goPrev()
+      if (absX <= tapThreshold && absY <= tapThreshold) {
+        const rect = event.currentTarget.getBoundingClientRect()
+        const tapX = touch.clientX - rect.left
+        if (tapX < rect.width / 2) {
+          goPrev()
+        } else {
+          goNext()
+        }
       }
     },
     [goNext, goPrev]
@@ -158,7 +172,7 @@ export default function GalleryPage() {
               </p>
             </div>
             <div
-              className="mt-4 overflow-hidden"
+              className="mt-4 overflow-hidden select-none"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >

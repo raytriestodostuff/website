@@ -101,11 +101,11 @@ export default function Navigation({ revealOnHover = true }: NavigationProps) {
           }
         }}
         className={`fixed top-0 left-0 right-0 z-50 nav-surface transition-all duration-300 ${
-          isScrolled ? 'py-5' : 'py-7'
+          isScrolled ? 'py-3 md:py-5' : 'py-4 md:py-7'
         } ${shouldHide ? 'pointer-events-none' : 'pointer-events-auto'}`}
       >
       <div className="max-w-6xl mx-auto px-6">
-        <div className="px-2 py-3">
+        <div className="px-2 py-2 md:py-3">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
