@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-28 pb-16 px-6">
+    <section id="hero" className="min-h-screen-stable flex items-center justify-center pt-28 pb-16 px-6">
       <div className="max-w-6xl mx-auto w-full">
         <div className="grid lg:grid-cols-[3fr_2fr] gap-14 items-center">
           <motion.div

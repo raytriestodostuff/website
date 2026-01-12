@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -8,6 +8,8 @@ import { galleryImages } from '@/lib/gallery'
 
 export default function GalleryPage() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
 
   const openImage = useCallback((index: number) => {
     setActiveIndex(index)
@@ -30,6 +32,36 @@ export default function GalleryPage() {
     }
     setActiveIndex((activeIndex - 1 + galleryImages.length) % galleryImages.length)
   }, [activeIndex])
+
+  const handleTouchStart = useCallback((event: React.TouchEvent) => {
+    const touch = event.touches[0]
+    touchStartX.current = touch.clientX
+    touchStartY.current = touch.clientY
+  }, [])
+
+  const handleTouchEnd = useCallback(
+    (event: React.TouchEvent) => {
+      if (touchStartX.current === null || touchStartY.current === null) {
+        return
+      }
+      const touch = event.changedTouches[0]
+      const deltaX = touchStartX.current - touch.clientX
+      const deltaY = touchStartY.current - touch.clientY
+      touchStartX.current = null
+      touchStartY.current = null
+
+      if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) {
+        return
+      }
+
+      if (deltaX > 0) {
+        goNext()
+      } else {
+        goPrev()
+      }
+    },
+    [goNext, goPrev]
+  )
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -112,46 +144,42 @@ export default function GalleryPage() {
       </section>
 
       {activeImage && (
-        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/70 p-6">
-          <button
-            type="button"
-            className="absolute inset-0"
-            aria-label="Close image"
-            onClick={closeImage}
-          />
-          <div className="relative z-10 w-full max-w-5xl rounded-3xl bg-white p-6 shadow-xl">
+        <div
+          className="fixed inset-0 z-60 flex items-center justify-center bg-black/80 p-4 sm:p-6"
+          onClick={closeImage}
+        >
+          <div
+            className="relative z-10 inline-flex max-w-[90vw] flex-col text-white"
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className="flex items-center justify-between">
-              <p className="text-xs text-stone-500">
+              <p className="text-xs text-white/70">
                 Image {(activeIndex ?? 0) + 1} of {galleryImages.length}
               </p>
-              <button
-                type="button"
-                onClick={closeImage}
-                className="text-xs font-semibold text-stone-600 hover:text-stone-900"
-              >
-                Close
-              </button>
             </div>
-            <div className="mt-4 rounded-2xl bg-stone-50 p-3">
+            <div
+              className="mt-4 overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <img
                 src={activeImage.src}
                 alt="Expanded gallery image"
-                className="w-full max-h-[75vh] object-contain rounded-xl"
+                className="max-h-[75vh] max-w-[90vw] object-contain"
               />
             </div>
-            <div className="mt-4 flex items-center justify-between">
+            <div className="mt-4 flex w-full items-center justify-between">
               <button
                 type="button"
                 onClick={goPrev}
-                className="notion-button notion-button-secondary px-4 py-2 text-xs"
+                className="rounded-full border border-white/40 px-4 py-2 text-xs font-semibold text-white/80 hover:border-white hover:text-white"
               >
                 Prev
               </button>
-              <p className="text-xs text-stone-500">Use left/right arrows to navigate</p>
               <button
                 type="button"
                 onClick={goNext}
-                className="notion-button notion-button-secondary px-4 py-2 text-xs"
+                className="rounded-full border border-white/40 px-4 py-2 text-xs font-semibold text-white/80 hover:border-white hover:text-white"
               >
                 Next
               </button>

@@ -43,11 +43,13 @@ export default function Projects() {
                     href={`/projects/${project.slug}`}
                     className="notion-card p-6 min-w-[260px] sm:min-w-[320px] lg:min-w-[360px] snap-start transition-transform duration-200 hover:-translate-y-1"
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
                       <h3 className="text-lg font-semibold text-stone-900 leading-tight break-words">
                         {project.title}
                       </h3>
-                      <span className="notion-chip">{project.status}</span>
+                      <span className="notion-chip text-[9px] px-2 py-0.5 leading-none tracking-wide sm:text-[10px] sm:px-2.5 sm:py-1 sm:shrink-0">
+                        {project.status}
+                      </span>
                     </div>
                     <p className="text-stone-600 mt-4 text-sm leading-relaxed">{project.summary}</p>
                     <span className="text-xs uppercase tracking-widest text-stone-500 mt-4 inline-block">

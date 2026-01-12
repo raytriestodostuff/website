@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 type GalleryImage = {
   src: string
@@ -15,6 +15,8 @@ type ProjectImageGalleryProps = {
 export default function ProjectImageGallery({ images, title }: ProjectImageGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const hasImages = images.length > 0
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
 
   const openImage = useCallback((index: number) => {
     setActiveIndex(index)
@@ -37,6 +39,36 @@ export default function ProjectImageGallery({ images, title }: ProjectImageGalle
     }
     setActiveIndex((activeIndex - 1 + images.length) % images.length)
   }, [activeIndex, images.length])
+
+  const handleTouchStart = useCallback((event: React.TouchEvent) => {
+    const touch = event.touches[0]
+    touchStartX.current = touch.clientX
+    touchStartY.current = touch.clientY
+  }, [])
+
+  const handleTouchEnd = useCallback(
+    (event: React.TouchEvent) => {
+      if (touchStartX.current === null || touchStartY.current === null) {
+        return
+      }
+      const touch = event.changedTouches[0]
+      const deltaX = touchStartX.current - touch.clientX
+      const deltaY = touchStartY.current - touch.clientY
+      touchStartX.current = null
+      touchStartY.current = null
+
+      if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) {
+        return
+      }
+
+      if (deltaX > 0) {
+        goNext()
+      } else {
+        goPrev()
+      }
+    },
+    [goNext, goPrev]
+  )
 
   useEffect(() => {
     if (activeIndex === null) {
@@ -84,11 +116,11 @@ export default function ProjectImageGallery({ images, title }: ProjectImageGalle
             onClick={() => openImage(index)}
             className="min-w-[260px] sm:min-w-[320px] md:min-w-[360px] lg:min-w-[420px] snap-start text-left"
           >
-            <div className="rounded-2xl bg-white p-3 shadow-sm">
+            <div className="rounded-2xl bg-white shadow-sm overflow-hidden">
               <img
                 src={image.src}
                 alt={`${title} image ${index + 1}`}
-                className="w-full h-56 object-contain rounded-xl bg-stone-50"
+                className="w-full h-56 object-contain bg-stone-50"
                 loading="lazy"
                 decoding="async"
               />
@@ -99,33 +131,29 @@ export default function ProjectImageGallery({ images, title }: ProjectImageGalle
       </div>
 
       {activeImage && (
-        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/70 p-6">
-          <button
-            type="button"
-            className="absolute inset-0"
-            aria-label="Close image"
-            onClick={closeImage}
-          />
-          <div className="relative z-10 w-full max-w-4xl rounded-3xl bg-white p-6 shadow-xl">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-stone-700">{activeImage.caption}</p>
-              <button
-                type="button"
-                onClick={closeImage}
-                className="text-xs font-semibold text-stone-600 hover:text-stone-900"
-              >
-                Close
-              </button>
+        <div
+          className="fixed inset-0 z-60 flex items-center justify-center bg-black/80 p-4 sm:p-6"
+          onClick={closeImage}
+        >
+          <div
+            className="relative z-10 inline-flex max-w-[90vw] flex-col text-white"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex w-full items-center justify-between">
+              <p className="text-sm font-semibold text-white/80">{activeImage.caption}</p>
             </div>
-            <div className="mt-4 rounded-2xl bg-stone-50 p-3">
+            <div
+              className="mt-4 overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <img
                 src={activeImage.src}
                 alt={`${title} expanded image`}
-                className="w-full max-h-[70vh] object-contain rounded-xl"
+                className="max-h-[70vh] max-w-[90vw] object-contain"
                 loading="eager"
               />
             </div>
-            <p className="mt-4 text-xs text-stone-500">Use the left and right arrow keys to navigate.</p>
           </div>
         </div>
       )}

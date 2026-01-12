@@ -90,6 +90,11 @@
     scrollbar-width: none;
   }
 
+  .min-h-screen-stable {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
 }
 
 /* Custom selection color */
