@@ -105,6 +105,21 @@ export default function GalleryPage() {
     return galleryImages[activeIndex]
   }, [activeIndex])
 
+  useEffect(() => {
+    if (activeIndex === null) {
+      return
+    }
+    const indices = [
+      activeIndex,
+      (activeIndex + 1) % galleryImages.length,
+      (activeIndex - 1 + galleryImages.length) % galleryImages.length,
+    ]
+    indices.forEach((index) => {
+      const preload = new Image()
+      preload.src = galleryImages[index].src
+    })
+  }, [activeIndex])
+
   return (
     <main className="relative">
       <Navigation />
@@ -180,6 +195,8 @@ export default function GalleryPage() {
                 src={activeImage.src}
                 alt="Expanded gallery image"
                 className="max-h-[75vh] max-w-[90vw] object-contain"
+                loading="eager"
+                decoding="async"
               />
             </div>
             <div className="mt-4 flex w-full items-center justify-between">

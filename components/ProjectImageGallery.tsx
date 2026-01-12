@@ -112,6 +112,21 @@ export default function ProjectImageGallery({ images, title }: ProjectImageGalle
     return images[activeIndex]
   }, [activeIndex, images])
 
+  useEffect(() => {
+    if (activeIndex === null) {
+      return
+    }
+    const indices = [
+      activeIndex,
+      (activeIndex + 1) % images.length,
+      (activeIndex - 1 + images.length) % images.length,
+    ]
+    indices.forEach((index) => {
+      const preload = new Image()
+      preload.src = images[index].src
+    })
+  }, [activeIndex, images])
+
   if (!hasImages) {
     return null
   }
