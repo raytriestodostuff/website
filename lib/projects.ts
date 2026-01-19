@@ -17,6 +17,27 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'zephyr-ble-beacon-nrf52840',
+    title: 'Zephyr Powered BLE Beacon (NRF52840 DK)',
+    status: 'Prototype',
+    focus: 'BLE advertising, Zephyr RTOS, embedded firmware',
+    summary: 'iBeacon-style BLE broadcaster built on Zephyr for the nRF52840 DK.',
+    description:
+      'Built a Bluetooth Low Energy beacon on the nRF52840 DK using Zephyr RTOS and the nRF Connect SDK toolchain. The firmware assembles an iBeacon manufacturer payload (UUID, major/minor, TX power) and advertises it in a non-connectable packet.\n\nA scan response is added for a human-readable name so standard BLE scanner apps can show both the beacon identity and a friendly label. The project focuses on payload construction, advertising configuration, and validation against common mobile BLE scanners.',
+    highlights: [
+      'iBeacon payload construction with custom UUID, major/minor, and TX power',
+      'Scannable, non-connectable advertising with a named scan response',
+      'Validated broadcast format using mobile BLE scanner tooling',
+    ],
+    tools: ['Zephyr RTOS', 'nRF Connect SDK', 'nRF52840 DK', 'BLE advertising', 'Nordic toolchain'],
+    tags: ['Embedded', 'Bluetooth', 'RTOS'],
+    featured: false,
+    images: [
+      { src: '/images/ble-beacon-1.jpg', caption: 'Beacon setup' },
+      { src: '/images/ble-beacon-2.png', caption: 'Broadcast test' },
+    ],
+  },
+  {
     slug: 'benchtop-static-light-scattering',
     title: 'Benchtop Static Light Scattering',
     status: 'Prototype',

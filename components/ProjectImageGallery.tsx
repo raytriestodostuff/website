@@ -153,7 +153,7 @@ export default function ProjectImageGallery({ images, title }: ProjectImageGalle
                 loading="lazy"
                 decoding="async"
               />
-              <p className="mt-3 text-xs text-stone-500">{image.caption}</p>
+              <p className="mt-3 text-xs text-stone-500 px-4 pb-4">{image.caption}</p>
             </div>
           </button>
         ))}
