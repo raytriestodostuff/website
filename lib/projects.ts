@@ -68,6 +68,35 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'ble-ota-desktop-uploader',
+    title: 'OTA Firmware Tool',
+    status: 'Prototype',
+    focus: 'BLE DFU, desktop tooling, Zephyr firmware workflow',
+    summary: 'Desktop app that updates a board wirelessly without a USB cable.',
+    description:
+      'Built a Windows desktop app that updates MCU boards (e.g., nRF52840 DK) using Zephyr\'s SMP (mcumgr) over BLE for OTA updates. The app scans for nearby devices and lets you select a signed MCUboot image to upload.\n\nThe firmware uses MCUboot\'s dual-slot layout to stage updates safely. The app uploads the image to the secondary slot, marks it for a test boot, triggers a reset, and then confirms the new image once it is running. This keeps the workflow simple while preserving rollback if the new build fails to start.',
+    highlights: [
+      'One-click OTA flow that uploads, tests, resets, and confirms',
+      'Safe flash mode to improve stability on Windows BLE stacks',
+      'Log filtering and progress tracking for clear demonstrations',
+    ],
+    tools: [
+      'Zephyr RTOS',
+      'nRF Connect SDK',
+      'MCUboot',
+      'mcumgr SMP over BLE',
+      'Qt 6',
+      'Python smpclient',
+    ],
+    tags: ['Embedded', 'Bluetooth', 'RTOS'],
+    featured: false,
+    images: [
+      { src: '/images/OTA BLE Device scan.png', caption: 'Scan for devices' },
+      { src: '/images/OTA Device upload.png', caption: 'Upload firmware' },
+      { src: '/images/OTA Device confirmation.png', caption: 'Confirm update' },
+    ],
+  },
+  {
     slug: 'gpr-spectral-reconstruction',
     title: 'GPR Spectral Reconstruction',
     status: 'Prototype',
