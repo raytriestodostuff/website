@@ -17,6 +17,33 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'wax-patterned-paper-microfluidics',
+    title: 'Wax-Patterned Paper Microfluidics',
+    status: 'Prototype',
+    focus: 'Microfluidics, low-cost fabrication, rapid prototyping',
+    summary: 'At-home microfluidic prototypes using wax-patterned chromatography paper.',
+    description:
+      'I am building microfluidic channels at home using a low-cost, additive wax process. The current approach patterns wax on chromatography paper, then stacks and bonds the layers using a hot plate to form sealed channels. This method is inexpensive and fast, but the resolution is limited and the channel walls are not yet precise enough for reliable flow control.\n\nThis project is an early prototype and actively in progress. I am now testing higher-resolution methods beyond additive wax to improve channel fidelity and repeatability while keeping the setup accessible and low cost.',
+    highlights: [
+      'Chromatography paper channels formed with wax patterning',
+      'Hot-plate bonding for quick, low-cost fabrication',
+      'Ongoing work to improve resolution and repeatability',
+    ],
+    tools: [
+      'Wax templates',
+      'Chromatography paper',
+      'Hot plate bonding',
+      '3D-printed channel guides',
+    ],
+    tags: ['Biomedical', 'Fabrication'],
+    featured: false,
+    images: [
+      { src: '/images/wax-chips-1.jpg', caption: 'Wax microfluidic chip prototype' },
+      { src: '/images/wax-chips-2.png', caption: '3D-printed channel template schematic' },
+      { src: '/images/wax-chips-3.png', caption: 'Wax pen template on paper' },
+    ],
+  },
+  {
     slug: 'zephyr-ble-beacon-nrf52840',
     title: 'Zephyr Powered BLE Beacon (NRF52840 DK)',
     status: 'Prototype',
