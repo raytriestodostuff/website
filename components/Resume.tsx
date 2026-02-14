@@ -10,6 +10,13 @@ const contact = {
 
 const experience = [
   {
+    role: 'Hardware Design Engineer',
+    company: 'Timebeat - London, UK',
+    timeframe: 'Feb 2026 - Present',
+    summary:
+      'Designed timing-system hardware in Altium, delivering multi-layer PCBs from schematic to release. Validated clock-sync platforms (oscillators, GNSS, PTP/NTP modules) through structured lab testing, rapid debug iterations, and close collaboration with firmware, FPGA (Vivado), software, and manufacturing teams.',
+  },
+  {
     role: 'Software Engineer',
     company: 'Cedar Labs - London, UK',
     timeframe: 'Sep 2025 - Dec 2025',
