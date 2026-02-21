@@ -45,7 +45,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </div>
 
             <div className="notion-card p-6 space-y-4">
-              <p className="text-stone-600 text-lg leading-relaxed">{project.summary}</p>
+              {project.summary.trim().length > 0 && (
+                <p className="text-stone-600 text-lg leading-relaxed">{project.summary}</p>
+              )}
               {descriptionParagraphs.map((paragraph) => {
                 const cleanedParagraph = paragraph.trim()
                 const isAttribution = cleanedParagraph.startsWith('Built alongside:')
@@ -76,7 +78,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </ul>
               </div>
               <div className="notion-card p-6 space-y-3">
-                <h2 className="text-lg font-semibold text-stone-900">Tools and Methods</h2>
+                <h2 className="text-lg font-semibold text-stone-900">What Matters</h2>
                 <ul className="space-y-2 text-sm text-stone-600 list-disc list-inside">
                   {project.tools.map((item) => (
                     <li key={item}>{item}</li>

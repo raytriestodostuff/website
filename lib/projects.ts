@@ -17,6 +17,36 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'eda2alt',
+    title: 'Eda2Alt',
+    status: 'Active',
+    focus: 'Automated ECAD footprint and symbol extraction for Altium',
+    summary: 'CLI powered component extraction for Altium Desginer',
+    description:
+      'Eda2Alt is a simple CLI tool that is used to extract JLCPCB/EasyEDA symbols and footprints and convert them into native Altium elements. The tool will extract schematic symbols, component footprints and 3D models.\n\nThe tool takes a LCSC/JLCPCB C-Part number and generates native Altium libraries directly in an allocated directory. The current version focuses on practical reliability: session-based CLI flow, clean output folders, improved footprint/symbol parity, and robust backend handling. It is designed for fast part ingestion during PCB development while keeping generated libraries ready to open in Altium immediately.',
+    highlights: [
+      'Direct LCSC/EasyEDA to native Altium conversion',
+      'Generates schematic symbol, footprint, and STEP 3D body',
+      'Session-based CLI for repeated part imports into one target directory',
+      'Clean output structure for immediate library use',
+    ],
+    tools: [
+      'Ready-to-open native Altium outputs in one run',
+      'Schematic symbol, footprint, and 3D model extraction',
+      'Clean output folders for immediate project use',
+      'Improved symbol/footprint parity to reduce manual fixes',
+      'Session-based CLI flow for faster part ingestion',
+    ],
+    tags: ['EDA', 'Automation', 'Python', 'Altium', 'CLI'],
+    featured: true,
+    images: [
+      { src: '/images/EDA2ALT CLI workflow.png', caption: 'CLI workflow' },
+      { src: '/images/EDA2ALT Schematic conversion.png', caption: 'Schematic symbol conversion' },
+      { src: '/images/EDA2ALT Footprint Conversion.png', caption: 'Footprint conversion' },
+      { src: '/images/EDA2ALT 3D Body conversion.png', caption: '3D body conversion' },
+    ],
+  },
+  {
     slug: 'wax-patterned-paper-microfluidics',
     title: 'Wax-Patterned Paper Microfluidics',
     status: 'Prototype',
