@@ -13,6 +13,14 @@ export type Project = {
     src: string
     caption: string
   }[]
+  viewer?: {
+    provider: 'altium'
+    title: string
+    projectPath: string
+    enabledViews?: string[]
+    activeView?: 'sch' | 'pcb' | '3d'
+    srcType?: 'Design' | 'Gerber'
+  }
 }
 
 export const projects: Project[] = [
@@ -272,6 +280,44 @@ export const projects: Project[] = [
       { src: '/images/actuator-v1.jpg', caption: 'Version 1' },
       { src: '/images/actuator-v2-default.jpg', caption: 'Version 2 (default)' },
       { src: '/images/actuator-v2.jpg', caption: 'Version 2 (actuated)' },
+    ],
+  },
+  {
+    slug: 'brain-computer-interface',
+    title: 'Brain Computer Interface',
+    status: 'Prototype',
+    focus: 'Biopotential acquisition, wireless embedded systems, PCB design',
+    summary:
+      'This project presents a compact BCI electronics platform with integrated biopotential capture, BLE, IMU sensing, and USB-C power.',
+    description:
+      'The board is built around a dedicated biopotential acquisition chain, a wireless MCU module, onboard motion sensing, and USB-C power management so the full system can move toward compact, self-contained EEG or related biosignal capture.\n\nThe current revision focuses on integration and practicality rather than enclosure polish. It combines the analog front end, digital control, telemetry, and board-level power architecture into one Altium project, which makes it a useful platform both for hardware iteration and for validating stack-up, routing density, and connector placement in 3D before fabrication.',
+    highlights: [
+      'Dedicated biopotential acquisition chain for compact EEG and related biosignal capture',
+      'Wireless MCU, onboard IMU sensing, and USB-C power integrated into a single board',
+      'Compact hardware architecture that combines the analog front end, telemetry, sensing, and power system in one design',
+    ],
+    tools: [
+      'Altium Designer',
+      'ADS1299 biopotential front end',
+      'NINA-B306 wireless MCU module',
+      'USB-C power delivery stage',
+      'IMU integration',
+    ],
+    tags: ['Biomedical', 'Embedded', 'Electronics'],
+    featured: false,
+    viewer: {
+      provider: 'altium',
+      title: 'OpenNerve Viewer',
+      projectPath: '/viewers/open-nerve/open-nerve-card-v1.zip',
+      enabledViews: ['sch', 'pcb', '3d'],
+      activeView: 'sch',
+      srcType: 'Design',
+    },
+    images: [
+      { src: '/images/open-nerve/open-nerve-3d-render.png', caption: 'Primary 3D render' },
+      { src: '/images/open-nerve/open-nerve-3d-render-1.png', caption: '3D render angle 1' },
+      { src: '/images/open-nerve/open-nerve-3d-render-2.png', caption: '3D render angle 2' },
+      { src: '/images/open-nerve/open-nerve-3d-render-3.png', caption: '3D render angle 3' },
     ],
   },
   {

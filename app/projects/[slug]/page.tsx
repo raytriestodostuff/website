@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { projects } from '@/lib/projects'
 import ProjectImageGallery from '@/components/ProjectImageGallery'
+import ProjectViewer from '@/components/ProjectViewer'
 
 type ProjectPageProps = {
   params: {
@@ -86,6 +87,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </ul>
               </div>
             </div>
+
+            <ProjectViewer project={project} />
 
             {project.images && (
               <ProjectImageGallery images={project.images} title={project.title} />

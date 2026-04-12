@@ -9,16 +9,29 @@ import { projects } from '@/lib/projects'
 
 const allStatuses = Array.from(new Set(projects.map((project) => project.status))).sort()
 const allTags = Array.from(new Set(projects.flatMap((project) => project.tags))).sort()
+const priorityProjectSlug = 'brain-computer-interface'
 
 export default function ProjectsPage() {
   const [selectedStatus, setSelectedStatus] = useState('All')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const filteredProjects = projects.filter((project) => {
-    const statusMatch = selectedStatus === 'All' || project.status === selectedStatus
-    const tagMatch =
-      selectedTags.length === 0 || selectedTags.some((tag) => project.tags.includes(tag))
-    return statusMatch && tagMatch
-  })
+  const filteredProjects = projects
+    .filter((project) => {
+      const statusMatch = selectedStatus === 'All' || project.status === selectedStatus
+      const tagMatch =
+        selectedTags.length === 0 || selectedTags.some((tag) => project.tags.includes(tag))
+      return statusMatch && tagMatch
+    })
+    .sort((a, b) => {
+      if (a.slug === priorityProjectSlug) {
+        return -1
+      }
+
+      if (b.slug === priorityProjectSlug) {
+        return 1
+      }
+
+      return 0
+    })
 
   return (
     <main className="relative">
