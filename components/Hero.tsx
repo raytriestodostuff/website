@@ -76,7 +76,7 @@ export default function Hero() {
               <div className="grid gap-4">
                 {[
                   { label: 'Location', value: 'London, UK' },
-                  { label: 'Current projects', value: 'Developing a precision neural interface platform' },
+                  { label: 'Current projects', value: 'Building an FPGA-based DLS platform' },
                   { label: 'Interests', value: 'Health, wearables, optics, robotics, smart manufacturing, electronics, AI' },
                 ].map((item) => (
                   <div key={item.label} className="flex flex-col gap-1">
