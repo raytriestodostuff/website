@@ -9,7 +9,7 @@ import { projects } from '@/lib/projects'
 
 const allStatuses = Array.from(new Set(projects.map((project) => project.status))).sort()
 const allTags = Array.from(new Set(projects.flatMap((project) => project.tags))).sort()
-const priorityProjectSlug = 'brain-computer-interface'
+const priorityProjectSlug = 'fpga-powered-dls-system'
 
 export default function ProjectsPage() {
   const [selectedStatus, setSelectedStatus] = useState('All')

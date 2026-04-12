@@ -25,6 +25,40 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'fpga-powered-dls-system',
+    title: 'FPGA-Powered DLS System',
+    status: 'Active',
+    focus: 'FPGA signal processing, analogue front end, dynamic light scattering',
+    summary:
+      'Compact DLS instrument pairing a low-noise analogue front end with an FPGA-based correlation and control chain.',
+    description:
+      'This project develops a compact Dynamic Light Scattering (DLS) system that pairs a low-noise analogue front end with an FPGA-based signal processing chain. The analogue stage conditions the photodetector output through filtering, gain staging, and a clean power rail, while the FPGA is intended to drive high-speed sampling and real-time correlation of the scattered-light signal.\n\nA buck-boost converter provides a regulated 5 V rail from a range of input voltages, keeping the analogue chain isolated from supply transients. The PCB is laid out in Altium Designer with careful ground plane separation between the power, analogue, and digital domains. The current revision includes a full schematic, routed board, and bill of materials; the FPGA processing chain is the active focus of the next revision.',
+    highlights: [
+      'Integrated analogue front end with an FPGA-based signal processing path',
+      'Photodetector conditioning with filtering, gain staging, and clean power',
+      'Buck-boost power stage providing a regulated 5 V rail',
+      'Ground plane separation across power, analogue, and digital domains',
+    ],
+    tools: [
+      'Altium Designer',
+      'FPGA signal processing',
+      'Buck-boost converter',
+      'Analogue signal conditioning',
+      'Photodetector interface',
+      'SMD PCB layout',
+    ],
+    tags: ['Electronics', 'Optics', 'FPGA'],
+    featured: true,
+    viewer: {
+      provider: 'altium',
+      title: 'FPGA DLS Viewer',
+      projectPath: '/viewers/dls-detector/dls-detector.zip',
+      enabledViews: ['sch', 'pcb', '3d'],
+      activeView: 'sch',
+      srcType: 'Design',
+    },
+  },
+  {
     slug: 'eda2alt',
     title: 'Eda2Alt',
     status: 'Active',
@@ -281,38 +315,6 @@ export const projects: Project[] = [
       { src: '/images/actuator-v2-default.jpg', caption: 'Version 2 (default)' },
       { src: '/images/actuator-v2.jpg', caption: 'Version 2 (actuated)' },
     ],
-  },
-  {
-    slug: 'dls-analogue-front-end-detector',
-    title: 'DLS Analogue Front End Detector',
-    status: 'Active',
-    focus: 'Analogue front end design, photodetector signal conditioning, PCB layout',
-    summary:
-      'Analogue front end and power management board for a dynamic light scattering detector, built around a dedicated AFE signal chain and buck-boost power stage.',
-    description:
-      'This board implements the analogue front end for a dynamic light scattering (DLS) instrument. The design centres on signal conditioning for a photodetector output, with filtering, gain staging, and a clean power rail to minimise noise in the measurement path.\n\nA buck-boost converter provides a regulated 5 V supply from a range of input voltages, keeping the analogue chain isolated from supply transients. The PCB is laid out in Altium Designer with attention to ground plane separation between the power and signal domains. The current revision includes a full schematic, routed board, and bill of materials ready for fabrication.',
-    highlights: [
-      'Dedicated analogue front end for photodetector signal conditioning',
-      'Buck-boost power stage providing regulated 5 V rail',
-      'Ground plane separation between power and signal domains',
-    ],
-    tools: [
-      'Altium Designer',
-      'Buck-boost converter',
-      'Analogue signal conditioning',
-      'Photodetector interface',
-      'SMD PCB layout',
-    ],
-    tags: ['Electronics', 'Optics'],
-    featured: false,
-    viewer: {
-      provider: 'altium',
-      title: 'DLS Detector Viewer',
-      projectPath: '/viewers/dls-detector/dls-detector.zip',
-      enabledViews: ['sch', 'pcb', '3d'],
-      activeView: 'sch',
-      srcType: 'Design',
-    },
   },
   {
     slug: 'brain-computer-interface',

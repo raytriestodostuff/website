@@ -1,12 +1,28 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { projects } from '@/lib/projects'
+import { projects, type Project } from '@/lib/projects'
 
 const featuredProjects = projects.filter((project) => project.featured)
 
+function shuffle<T>(items: T[]): T[] {
+  const copy = [...items]
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[copy[i], copy[j]] = [copy[j], copy[i]]
+  }
+  return copy
+}
+
 export default function Projects() {
+  const [displayed, setDisplayed] = useState<Project[]>(featuredProjects)
+
+  useEffect(() => {
+    setDisplayed(shuffle(featuredProjects))
+  }, [])
+
   return (
     <section id="projects" className="pt-10 pb-20 px-6">
       <div className="max-w-6xl mx-auto">
@@ -37,7 +53,7 @@ export default function Projects() {
                 <span className="text-xs text-stone-500">Scroll to explore</span>
               </div>
               <div className="flex flex-nowrap gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide">
-                {featuredProjects.map((project) => (
+                {displayed.map((project) => (
                   <Link
                     key={project.title}
                     href={`/projects/${project.slug}`}
@@ -60,7 +76,7 @@ export default function Projects() {
               </div>
             </div>
 
-            {featuredProjects.length === 0 && (
+            {displayed.length === 0 && (
               <p className="text-sm text-stone-500">No featured projects yet.</p>
             )}
           </div>
