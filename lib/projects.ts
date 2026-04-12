@@ -26,7 +26,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'fpga-powered-dls-system',
-    title: 'FPGA-Powered DLS System',
+    title: 'Analogue Front End for an FPGA-Based DLS System',
     status: 'Active',
     focus: 'FPGA signal processing, analogue front end, dynamic light scattering',
     summary:
