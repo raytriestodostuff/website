@@ -283,6 +283,38 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'dls-analogue-front-end-detector',
+    title: 'DLS Analogue Front End Detector',
+    status: 'Active',
+    focus: 'Analogue front end design, photodetector signal conditioning, PCB layout',
+    summary:
+      'Analogue front end and power management board for a dynamic light scattering detector, built around a dedicated AFE signal chain and buck-boost power stage.',
+    description:
+      'This board implements the analogue front end for a dynamic light scattering (DLS) instrument. The design centres on signal conditioning for a photodetector output, with filtering, gain staging, and a clean power rail to minimise noise in the measurement path.\n\nA buck-boost converter provides a regulated 5 V supply from a range of input voltages, keeping the analogue chain isolated from supply transients. The PCB is laid out in Altium Designer with attention to ground plane separation between the power and signal domains. The current revision includes a full schematic, routed board, and bill of materials ready for fabrication.',
+    highlights: [
+      'Dedicated analogue front end for photodetector signal conditioning',
+      'Buck-boost power stage providing regulated 5 V rail',
+      'Ground plane separation between power and signal domains',
+    ],
+    tools: [
+      'Altium Designer',
+      'Buck-boost converter',
+      'Analogue signal conditioning',
+      'Photodetector interface',
+      'SMD PCB layout',
+    ],
+    tags: ['Electronics', 'Optics'],
+    featured: false,
+    viewer: {
+      provider: 'altium',
+      title: 'DLS Detector Viewer',
+      projectPath: '/viewers/dls-detector/dls-detector.zip',
+      enabledViews: ['sch', 'pcb', '3d'],
+      activeView: 'sch',
+      srcType: 'Design',
+    },
+  },
+  {
     slug: 'brain-computer-interface',
     title: 'Brain Computer Interface',
     status: 'Prototype',
