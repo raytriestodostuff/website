@@ -9,7 +9,12 @@ import { projects } from '@/lib/projects'
 
 const allStatuses = Array.from(new Set(projects.map((project) => project.status))).sort()
 const allTags = Array.from(new Set(projects.flatMap((project) => project.tags))).sort()
-const priorityProjectSlug = 'fpga-powered-dls-system'
+const priorityProjectSlugs = ['fpga-powered-dls-system', 'brain-computer-interface']
+
+function getPriorityIndex(slug: string) {
+  const priorityIndex = priorityProjectSlugs.indexOf(slug)
+  return priorityIndex === -1 ? Number.MAX_SAFE_INTEGER : priorityIndex
+}
 
 export default function ProjectsPage() {
   const [selectedStatus, setSelectedStatus] = useState('All')
@@ -21,17 +26,7 @@ export default function ProjectsPage() {
         selectedTags.length === 0 || selectedTags.some((tag) => project.tags.includes(tag))
       return statusMatch && tagMatch
     })
-    .sort((a, b) => {
-      if (a.slug === priorityProjectSlug) {
-        return -1
-      }
-
-      if (b.slug === priorityProjectSlug) {
-        return 1
-      }
-
-      return 0
-    })
+    .sort((a, b) => getPriorityIndex(a.slug) - getPriorityIndex(b.slug))
 
   return (
     <main className="relative">
